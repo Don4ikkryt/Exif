@@ -8,10 +8,8 @@ import (
 	"strings"
 )
 
-type filename string
-
-func ReadPhotoesFromDirectory() []filename {
-	Filenames := make([]filename, 0)
+func ReadPhotoesFromDirectory() []string {
+	Filenames := make([]string, 0)
 
 	files, err := ioutil.ReadDir("C:\\Users\\don4i\\Desktop\\Go\\Exif")
 	if err != nil {
@@ -21,13 +19,13 @@ func ReadPhotoesFromDirectory() []filename {
 	return Filenames
 }
 
-func writeDirectories(files *[]os.FileInfo, Filenames *[]filename) {
+func writeDirectories(files *[]os.FileInfo, Filenames *[]string) {
 	FileExtension1 := ".jpg"
 	FileExtension2 := ".JPG"
 	for _, file := range *files {
 		fmt.Println(file.Name())
 		if strings.HasSuffix(file.Name(), FileExtension1) || strings.HasSuffix(file.Name(), FileExtension2) {
-			*Filenames = append(*Filenames, filename(file.Name()))
+			*Filenames = append(*Filenames, file.Name())
 		}
 
 	}
