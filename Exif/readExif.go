@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -19,15 +18,17 @@ func decodeImg(file *os.File) (exifFile *exif.Exif) {
 	return
 }
 func getGPSAltitude(file *os.File) (tiffFile *tiff.Tag) {
-	tiffFile, err := decodeImg(file).Get(exif.GPSAltitude)
+	exifFile := decodeImg(file)
+	tiffFile, err := exifFile.Get(exif.GPSAltitude)
 	if err != nil {
-		fmt.Println("2")
+
 		log.Fatal(err)
 	}
+
 	return
 }
-func RetriveHeight(file *os.File) {
-	height := getGPSAltitude(file).Format()
-
-	fmt.Println(height)
+func RetriveHeight(file *os.File) (toCloseFIle *os.File, stringValueOfHeight string) {
+	stringValueOfHeight = getGPSAltitude(file).String()
+	toCloseFIle = file
+	return
 }
