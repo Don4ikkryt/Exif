@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-func GetHeightFromAllPhotoes(filenames []string) (heights []float64) {
-
-	Path := "C:\\Users\\don4i\\Desktop\\Go\\Exif\\"
+func GetHeightFromAllPhotoes(filenames []string) map[string]float64 {
+	var heights map[string]float64 = make(map[string]float64)
+	path := "C:\\Users\\don4i\\Desktop\\Go\\Exif\\"
 	for _, filename := range filenames {
-		file, height := RetriveHeight(openPhoto(string(Path + filename)))
+		file, height := RetriveHeight(openPhoto(string(path + filename)))
 		file.Close()
-		heights = append(heights, fromStringToFloat64(height))
+		heights[filename] = fromStringToFloat64(height)
 	}
-	return
+	return heights
 }
 func fromStringToFloat64(line string) (floatNum float64) {
 	separator := "/"

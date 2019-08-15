@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -23,7 +22,6 @@ func writeDirectories(files *[]os.FileInfo, Filenames *[]string) {
 	FileExtension1 := ".jpg"
 	FileExtension2 := ".JPG"
 	for _, file := range *files {
-		fmt.Println(file.Name())
 		if strings.HasSuffix(file.Name(), FileExtension1) || strings.HasSuffix(file.Name(), FileExtension2) {
 			*Filenames = append(*Filenames, file.Name())
 		}
