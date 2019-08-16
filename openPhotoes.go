@@ -5,8 +5,8 @@ import (
 	"os"
 )
 
-func openPhoto(filename string) *os.File {
-	image, err := os.Open(filename)
+func openPhoto(filename string, path string) *os.File {
+	image, err := os.Open(path+"\\"+filename)
 	if err != nil {
 		log.Fatal(err)
 	}

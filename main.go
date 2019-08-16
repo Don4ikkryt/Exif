@@ -7,10 +7,10 @@ func main() {
 	SetHeight, SetPath := CommandLine()
 	fmt.Println(*SetHeight)
 	fmt.Println(*SetPath)
-	Filenames := ReadPhotoesFromDirectory()
+	Filenames := ReadPhotoesFromDirectory(*SetPath)
 	//fmt.Println(Filenames)
-	Heights := GetHeightFromAllPhotoes(Filenames)
+	Heights := GetHeightFromAllPhotoes(Filenames, *SetPath)
 	//fmt.Println(Heights)
-	CompareHeight(110, Heights, Filenames)
+	CompareHeight(110, Heights, Filenames, *SetPath)
 
 }

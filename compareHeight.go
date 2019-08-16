@@ -4,13 +4,15 @@ import (
 	"os"
 )
 
-func CompareHeight(height float64, heights map[string]float64, filenames []string) {
-	path := "C:\\Users\\don4i\\Desktop\\Go\\Exif\\Nonvalid"
-	createNonvalidDir(path)
+func CompareHeight(height float64, heights map[string]float64, filenames []string, path string) {
+	pathOfNonvalidFolder := path + "\\Nonvalid"
+	createNonvalidDir(pathOfNonvalidFolder)
 	for _, filename := range filenames {
 
 		if heights[filename] < height {
-			os.Rename("C:\\Users\\don4i\\Desktop\\Go\\Exif\\"+filename, "C:\\Users\\don4i\\Desktop\\Go\\Exif\\Nonvalid\\"+filename)
+			oldPath := path + "\\" + filename
+			newPath := pathOfNonvalidFolder + "\\" + filename
+			os.Rename(oldPath, newPath)
 		}
 
 	}

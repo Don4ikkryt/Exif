@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-func ReadPhotoesFromDirectory() []string {
+func ReadPhotoesFromDirectory(path string) []string {
 	Filenames := make([]string, 0)
 
-	files, err := ioutil.ReadDir("C:\\Users\\don4i\\Desktop\\Go\\Exif")
+	files, err := ioutil.ReadDir(path)
 	if err != nil {
 		log.Fatal(err)
 	}
