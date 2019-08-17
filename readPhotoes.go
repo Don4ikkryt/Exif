@@ -1,7 +1,7 @@
-package main
+package readPhotoes
 
 import (
-		"io/ioutil"
+	"io/ioutil"
 	"log"
 	"os"
 	"strings"
