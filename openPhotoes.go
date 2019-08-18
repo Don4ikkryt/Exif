@@ -1,4 +1,4 @@
-package openPhotoes
+package main
 
 import (
 	"log"

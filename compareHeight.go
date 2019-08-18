@@ -1,5 +1,4 @@
-package compareHeight
-
+package main
 import (
 	"os"
 )

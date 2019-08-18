@@ -1,4 +1,4 @@
-package readPhotoes
+package main
 
 import (
 	"io/ioutil"
