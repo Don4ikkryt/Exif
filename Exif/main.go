@@ -1,13 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"./cmd"
+	"./compareheight"
+	"./getheightfromallphotoes"
+	"./readphotoes"
+)
 
 func main() {
 
-	Filenames := ReadPhotoesFromDirectory()
-	Heights := GetHeightFromAllPhotoes(Filenames)
-	for _, height := range Heights {
-		fmt.Println(height)
-	}
+	SetHeight, SetPath := cmd.CommandLine()
+	Filenames := readphotoes.ReadPhotoesFromDirectory(*SetPath)
+	Heights := getheightfromallphotoes.GetHeightFromAllPhotoes(Filenames, *SetPath)
+	compareheight.CompareHeight(*SetHeight, Heights, Filenames, *SetPath)
 
 }

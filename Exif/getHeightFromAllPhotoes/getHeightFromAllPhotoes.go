@@ -1,18 +1,18 @@
-package getHeightFromAllPhotoes
+package getheightfromallphotoes
 
 import (
 	"log"
 	"strconv"
 	"strings"
 
-	openPhotoes "./OpenPhotoes"
-	"./readExif"
+	"./openphotoes"
+	"./readexif"
 )
 
 func GetHeightFromAllPhotoes(filenames []string, path string) map[string]float64 {
 	var heights map[string]float64 = make(map[string]float64)
 	for _, filename := range filenames {
-		file, height := readExif.RetriveHeight(openPhotoes.OpenPhoto(filename, path))
+		file, height := readexif.RetriveHeight(openphotoes.OpenPhoto(filename, path))
 		file.Close()
 		heights[filename] = fromStringToFloat64(height)
 

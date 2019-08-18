@@ -1,4 +1,4 @@
-package readExif
+package readexif
 
 import (
 	"log"
